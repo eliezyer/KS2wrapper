@@ -13,6 +13,8 @@ if nargin<1
     basepath = pwd;
 end
 
+%moving to folder
+cd(basepath)
 %loading configuration structure
 ops = StandardConfig_KS2Wrapper(basepath);
 
