@@ -6,7 +6,8 @@
 
 
 %% some flags for the script
-neurosuite_files = 0;
+neurosuite_files = 0; %generate neurosuite files yes =1, no =0;
+neuropixels_yn = 1; %whether it's neuropixels or not (use different configuration files). yes = 1, no =0;
 
 %% you need to change most of the paths in this block
 if nargin<1
@@ -16,7 +17,12 @@ end
 %moving to folder
 cd(basepath)
 %loading configuration structure
-ops = StandardConfig_KS2Wrapper(basepath);
+if neuropixels_yn
+    ops = StandardConfig_KS2Wrapper_neuropixels(basepath);
+else
+    ops = StandardConfig_KS2Wrapper(basepath);
+end
+
 
 %% this block runs all the steps of the algorithm
 fprintf('Looking for data inside %s \n', basepath)
@@ -40,8 +46,12 @@ rez = preprocessDataSub(ops);
 
 % time-reordering as a function of drift
 disp('drift correction...')
-rez = clusterSingleBatches(rez);
+% rez = clusterSingleBatches(rez); %this function doesn't exist in ks2.5
 
+% time-reordering as a function of drift
+disp('drift correction...')
+rez = clusterSingleBatches(rez);
+                 
 %creating a folder to save kilosort results every time
 temp = ['Kilosort2_' datestr(clock,'yyyy-mm-dd_HHMMSS')];
 ks2_folder = fullfile(basepath, temp);
@@ -60,7 +70,7 @@ rez = find_merges(rez, 1); %remove later?
 rez = splitAllClusters(rez, 1);
 
 % final splits by amplitudes
-rez = splitAllClusters(rez, 0);
+% rez = splitAllClusters(rez, 0);
 
 % decide on cutoff
 rez = set_cutoff(rez);

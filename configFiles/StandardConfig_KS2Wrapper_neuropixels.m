@@ -1,4 +1,4 @@
-function ops = StandardConfig_KS2Wrapper(basepath)
+function ops = StandardConfig_KS2Wrapper_neuropixels(basepath)
 %% Standard configuration for kilosort2 wrapper
 %  Remember that this configuration was optimized for striatal recordings,
 %  so make sure to adapt to your recordings
@@ -61,7 +61,7 @@ ops.GPU                 = 1; % has to be 1, no CPU version yet, sorry
 % ops.Nfilt               = 1024; % max number of clusters
 ops.nfilt_factor        = 4; % max number of clusters per good channel (even temporary ones)
 ops.ntbuff              = 64;    % samples of symmetrical buffer for whitening and spike detection
-ops.NT                  = 64*1024+ ops.ntbuff; % must be multiple of 32 + ntbuff. This is the batch size (try decreasing if out of memory). 
+ops.NT                  = 64*512+ ops.ntbuff; % must be multiple of 32 + ntbuff. This is the batch size (try decreasing if out of memory). 
 ops.whiteningRange      = 32; % number of channels to use for whitening each channel
 ops.nSkipCov            = 25; % compute whitening matrix from every N-th batch
 ops.scaleproc           = 200;   % int16 scaling of whitened data
