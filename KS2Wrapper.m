@@ -32,7 +32,11 @@ fs = dir(fullfile(basepath, 'chan*.mat'));
 if ~isempty(fs)
     ops.chanMap = fullfile(basepath, fs(1).name);
 else
-    createChannelMapFile_Local(basepath)
+    if neuropixels_yn
+        createChannelMapFile_Local_kilosort(basepath)
+    else
+        createChannelMapFile_Local(basepath)
+    end
 end
 %IF NOT, CREATE A CHANNEL MAP BASED ON THE XML
 
