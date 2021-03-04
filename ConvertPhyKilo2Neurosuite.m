@@ -53,7 +53,7 @@ parse(p,varargin{:})
 kilosort2 = p.Results.kilosort2;
 
 %finding the last Kilosort folder in order
-if~exist('ks_basepath','var')
+if exist('ks_basepath','var')
     KSdir = ks_basepath;
 else
     auxDir = dir;
@@ -69,7 +69,7 @@ end
 % cd(KSdir);
 
 if ~exist('rez','var')
-    load(fullfile(basepath,KSdir,'rez2.mat'))
+    load(fullfile(basepath,KSdir,'rez.mat'))
 end
 
 

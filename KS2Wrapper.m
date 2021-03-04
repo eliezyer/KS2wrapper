@@ -1,13 +1,17 @@
- function KS2Wrapper(basepath)
+ function KS2Wrapper(basepath,neuropixels_yn)
 %Kilosort 2 wrapper for neuroscope users. It extract informations from your
 %.xml to perform spike sorting.
+% Inputs: 
+%         basepath - directory where .dat and .xml is stored
+%         neuropixels_yn - flag [0,1 | false,true] whether the recordings are from neuropixels
+%         probes or not, different configuration are used if so.
 %
 %Eliezyer de Oliveira 02/03/2020
 
 
 %% some flags for the script
 neurosuite_files = 0; %generate neurosuite files yes =1, no =0;
-neuropixels_yn = 1; %whether it's neuropixels or not (use different configuration files). yes = 1, no =0;
+% neuropixels_yn = 1; %whether it's neuropixels or not (use different configuration files). yes = 1, no =0;
 
 %% you need to change most of the paths in this block
 if nargin<1

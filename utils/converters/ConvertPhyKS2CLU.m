@@ -47,7 +47,7 @@ parse(p,varargin{:})
 kilosort2 = p.Results.kilosort2;
 
 %finding the last Kilosort folder in order
-if~exist('ks_basepath','var')
+if exist('ks_basepath','var')
     KSdir = ks_basepath;
 else
     auxDir = dir;
@@ -76,7 +76,7 @@ end
 % connected    = ones(Nchan, 1);
 % xcoords      = ones(Nchan, 1);
 % ycoords      = (1:Nchan)';
-d   = dir('*.xml');
+d   = dir([basepath filesep '*.xml']);
 if ~isempty(d)
     par = LoadXml(fullfile(basepath,d(1).name));
 else

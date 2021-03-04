@@ -64,7 +64,7 @@ try
             
             if sum(useCH)>0 && sum(useCH)==length(useCH)
                 
-                [U,S,V] = svd(normalize(d(:,CHnum(useCH)),'center'),'econ');
+                [U,S,V] = svd(normalize(d(:,CHnum(useCH)),'zscore'),'econ');
                 %reconstruct data
                 new_d(:,CHnum(useCH)) = U(:,2:end)*S(2:end,2:end)*V(:,2:end)';
             end
@@ -94,7 +94,7 @@ try
             
             if sum(useCH)>0 && sum(useCH)==length(useCH)
                 
-                [U,S,V] = svd(normalize(d(:,CHnum(useCH)),'center'),'econ');
+                [U,S,V] = svd(normalize(d(:,CHnum(useCH)),'zscore'),'econ');
                 %reconstruct data
                 new_d(:,CHnum(useCH)) = U(:,2:end)*S(2:end,2:end)*V(:,2:end)';
             end
