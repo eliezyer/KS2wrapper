@@ -123,7 +123,7 @@ cluster_id = S.cluster_id;
 GClusters = strfind(group(:,1)','g');
 if get_mua
     MClusters = strfind(group(:,1)','m');
-    GClusters = cat(2,GClusters,MClusters);
+    GCLusters = cat(2,GClusters,MClusters);
 end
 ExtClus = cluster_id(GClusters);
 
